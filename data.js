@@ -1,36 +1,37 @@
 studentsArray =
 [
   {
-    "name": "juana",
-    "porcentaje1": 1,
-    "porcentaje2": 30
+    'name': 'juana',
+    'porcentaje1': 1,
+    'porcentaje2': 30
   },
   {
-    "name": "ana",
-    "porcentaje1": 2,
-    "porcentaje2": 50
+    'name': 'ana',
+    'porcentaje1': 2,
+    'porcentaje2': 50
   },
   {
-    "name": "diana",
-    "porcentaje1": 20,
-    "porcentaje2": 28
+    'name': 'diana',
+    'porcentaje1': 20,
+    'porcentaje2': 28
   },
   {
-    "name": "liliana",
-    "porcentaje1": 18,
-    "porcentaje2": 50
+    'name': 'liliana',
+    'porcentaje1': 18,
+    'porcentaje2': 50
   }
 ];
 
 console.log(sortUsers(studentsArray, 'porcentaje1', 'DESC'));
+console.log(filterUsers(studentsArray, 'iana'));
 
 function sortUsers(users, orderBy, orderDirection) {
   return users.sort(sortOn(orderBy, orderDirection));
 }
 
-/*
+/* ternary operator reminder:
 condition ? resultIfTrue : resultIfFalse;
-return orderDirection == "ASC"? 1:-1;
+return orderDirection == 'ASC'? 1:-1;
 */
 
 function sortOn(property, orderDirection) {
@@ -43,4 +44,8 @@ function sortOn(property, orderDirection) {
       return 0;
     }
   };
+}
+
+function filterUsers(users, search) {
+  return users.filter(user => user.name.includes(search));
 }
