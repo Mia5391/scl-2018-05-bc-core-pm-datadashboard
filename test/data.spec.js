@@ -37,9 +37,7 @@ describe('data', ()=>{
       });
     });
     describe('user.stats para el primer usuario en data de prueba - ver carpeta data/', ()=>{
-
       const processed = computeUsersStats(users, progress, courses);
-
       it(
         'debería tener propiedad percent con valor 53',
         () => assert.equal(processed[0].stats.percent, 53)
@@ -90,91 +88,85 @@ describe('data', ()=>{
     });
 
     it('debería retornar arreglo de usuarios ordenado por nombre ASC', ()=>{
-      const sortedUsers = sortUsers(processed, 'name','ASC');
-      for (let i=1; i < sortedUsers.length; i++) { //because testing is done in 2s, so either 0 vs length-1 o 1 vs maxLength
-        assert.isAtMost(sortedUsers[0].name.localeCompare(sortedUsers[1].name), 0)
+      const sortedUsers = sortUsers(processed, 'name', 'ASC');
+      for (let i = 1; i < sortedUsers.length; i++) {
+        assert.isAtMost(sortedUsers[0].name.localeCompare(sortedUsers[1].name), 0);
       }
     });
     it('debería retornar arreglo de usuarios ordenado por nombre DESC', ()=>{
-      const sortedUsers = sortUsers(processed, 'name','DESC');
-      for (let i=1; i < sortedUsers.length; i++) { //because testing is done in 2s, so either 0 vs length-1 o 1 vs maxLength
-        assert.isAtLeast(sortedUsers[i-1].name.localeCompare(sortedUsers[i].name), 0)
+      const sortedUsers = sortUsers(processed, 'name', 'DESC');
+      for (let i = 1; i < sortedUsers.length; i++) {
+        assert.isAtLeast(sortedUsers[i - 1].name.localeCompare(sortedUsers[i].name), 0);
       }
     });
 
     it('debería retornar arreglo de usuarios ordenado por porcentaje general ASC', ()=>{
-      const sortedUsers = sortUsers(processed, 'stats.percent','ASC');
-      for (let i=1; i < sortedUsers.length; i++) { //because testing is done in 2s, so either 0 vs length-1 o 1 vs maxLength
-        assert.isAtMost(sortedUsers[0].stats.percent.localeCompare(sortedUsers[1].stats.percent), 0)
+      const sortedUsers = sortUsers(processed, 'stats.percent', 'ASC');
+      for (let i = 1; i < sortedUsers.length; i++) {
+        assert.isAtMost(sortedUsers[0].stats.percent.localeCompare(sortedUsers[1].stats.percent), 0);
       }
     });
     it('debería retornar arreglo de usuarios ordenado por porcentaje general DESC', ()=>{
-      const sortedUsers = sortUsers(processed, 'stats.percent','DESC');
-      for (let i=1; i < sortedUsers.length; i++) { //because testing is done in 2s, so either 0 vs length-1 o 1 vs maxLength
-        assert.isAtLeast(sortedUsers[i-1].stats.percent.localeCompare(sortedUsers[i].stats.percent), 0)
+      const sortedUsers = sortUsers(processed, 'stats.percent', 'DESC');
+      for (let i = 1; i < sortedUsers.length; i++) {
+        assert.isAtLeast(sortedUsers[i - 1].stats.percent.localeCompare(sortedUsers[i].stats.percent), 0);
       }
     });
     it('debería retornar arreglo de usuarios ordenado por ejercicios completados ASC', ()=>{
-      const sortedUsers = sortUsers(processed, 'stats.exercises.completed','ASC');
-      for (let i=1; i < sortedUsers.length; i++) { //because testing is done in 2s, so either 0 vs length-1 o 1 vs maxLength
-        assert.isAtMost(sortedUsers[0].stats.exercises.completed.localeCompare(sortedUsers[1].stats.exercises.completed), 0)
+      const sortedUsers = sortUsers(processed, 'stats.exercises.completed', 'ASC');
+      for (let i = 1; i < sortedUsers.length; i++) {
+        assert.isAtMost(sortedUsers[0].stats.exercises.completed.localeCompare(sortedUsers[1].stats.exercises.completed), 0);
       }
     });
     it('debería retornar arreglo de usuarios ordenado por ejercicios completados DESC', ()=>{
-      const sortedUsers = sortUsers(processed, 'stats.exercises.completed','DESC');
-      for (let i=1; i < sortedUsers.length; i++) { //because testing is done in 2s, so either 0 vs length-1 o 1 vs maxLength
-        assert.isAtLeast(sortedUsers[i-1].stats.exercises.completed.localeCompare(sortedUsers[i].stats.exercises.completed), 0)
+      const sortedUsers = sortUsers(processed, 'stats.exercises.completed', 'DESC');
+      for (let i = 1; i < sortedUsers.length; i++) {
+        assert.isAtLeast(sortedUsers[i - 1].stats.exercises.completed.localeCompare(sortedUsers[i].stats.exercises.completed), 0);
       }
     });
     it('debería retornar arreglo de usuarios ordenado por quizzes completados ASC', ()=>{
-      const sortedUsers = sortUsers(processed, 'stats.quizzes.completed','ASC');
-      for (let i=1; i < sortedUsers.length; i++) { //because testing is done in 2s, so either 0 vs length-1 o 1 vs maxLength
-        assert.isAtMost(sortedUsers[0].stats.quizzes.completed.localeCompare(sortedUsers[1].stats.quizzes.completed), 0)
+      const sortedUsers = sortUsers(processed, 'stats.quizzes.completed', 'ASC');
+      for (let i = 1; i < sortedUsers.length; i++) {
+        assert.isAtMost(sortedUsers[0].stats.quizzes.completed.localeCompare(sortedUsers[1].stats.quizzes.completed), 0);
       }
     });
     it('debería retornar arreglo de usuarios ordenado por quizzes completados DESC', ()=>{
-      const sortedUsers = sortUsers(processed, 'stats.quizzes.completed','DESC');
-      for (let i=1; i < sortedUsers.length; i++) { //because testing is done in 2s, so either 0 vs length-1 o 1 vs maxLength
-        assert.isAtLeast(sortedUsers[i-1].stats.quizzes.completed.localeCompare(sortedUsers[i].stats.quizzes.completed), 0)
+      const sortedUsers = sortUsers(processed, 'stats.quizzes.completed', 'DESC');
+      for (let i = 1; i < sortedUsers.length; i++) {
+        assert.isAtLeast(sortedUsers[i - 1].stats.quizzes.completed.localeCompare(sortedUsers[i].stats.quizzes.completed), 0);
       }
     });
     it('debería retornar arreglo de usuarios ordenado por score promedio en quizzes completados ASC', ()=>{
-      const sortedUsers = sortUsers(processed, 'stats.quizzes.scoreAvg','ASC');
-      for (let i=1; i < sortedUsers.length; i++) { //because testing is done in 2s, so either 0 vs length-1 o 1 vs maxLength
-        assert.isAtMost(sortedUsers[0].stats.quizzes.scoreAvg.localeCompare(sortedUsers[1].stats.quizzes.scoreAvg), 0)
+      const sortedUsers = sortUsers(processed, 'stats.quizzes.scoreAvg', 'ASC');
+      for (let i = 1; i < sortedUsers.length; i++) {
+        assert.isAtMost(sortedUsers[0].stats.quizzes.scoreAvg.localeCompare(sortedUsers[1].stats.quizzes.scoreAvg), 0);
       }
     });
     it('debería retornar arreglo de usuarios ordenado por score promedio en quizzes completados DESC', ()=>{
-      const sortedUsers = sortUsers(processed, 'stats.quizzes.scoreAvg','DESC');
-      for (let i=1; i < sortedUsers.length; i++) { //because testing is done in 2s, so either 0 vs length-1 o 1 vs maxLength
-        assert.isAtLeast(sortedUsers[i-1].stats.quizzes.scoreAvg.localeCompare(sortedUsers[i].stats.quizzes.scoreAvg), 0)
+      const sortedUsers = sortUsers(processed, 'stats.quizzes.scoreAvg', 'DESC');
+      for (let i = 1; i < sortedUsers.length; i++) {
+        assert.isAtLeast(sortedUsers[i - 1].stats.quizzes.scoreAvg.localeCompare(sortedUsers[i].stats.quizzes.scoreAvg), 0);
       }
     });
     it('debería retornar arreglo de usuarios ordenado por lecturas (reads) completadas ASC', ()=>{
-      const sortedUsers = sortUsers(processed, 'stats.reads.completed','ASC');
-      for (let i=1; i < sortedUsers.length; i++) { //because testing is done in 2s, so either 0 vs length-1 o 1 vs maxLength
-        assert.isAtMost(sortedUsers[0].stats.reads.completed.localeCompare(sortedUsers[1].stats.reads.completed), 0)
+      const sortedUsers = sortUsers(processed, 'stats.reads.completed', 'ASC');
+      for (let i = 1; i < sortedUsers.length; i++) {
+        assert.isAtMost(sortedUsers[0].stats.reads.completed.localeCompare(sortedUsers[1].stats.reads.completed), 0);
       }
     });
     it('debería retornar arreglo de usuarios ordenado por lecturas (reads) completadas DESC', ()=>{
-      const sortedUsers = sortUsers(processed, 'stats.reads.completed','DESC');
-      for (let i=1; i < sortedUsers.length; i++) { //because testing is done in 2s, so either 0 vs length-1 o 1 vs maxLength
-        assert.isAtLeast(sortedUsers[i-1].stats.reads.completed.localeCompare(sortedUsers[i].stats.reads.completed), 0)
+      const sortedUsers = sortUsers(processed, 'stats.reads.completed', 'DESC');
+      for (let i = 1; i < sortedUsers.length; i++) {
+        assert.isAtLeast(sortedUsers[i - 1].stats.reads.completed.localeCompare(sortedUsers[i].stats.reads.completed), 0);
       }
     });
-
   });
 
   describe('filterUsers(users, filterBy)', ()=>{
-
     it('debería retornar nuevo arreglo solo con usuarios con nombres que contengan string (case insensitive)');
-
   });
 
   describe('processCohortData({ cohortData, orderBy, orderDirection, filterBy })', ()=>{
-
     it('debería retornar arreglo de usuarios con propiedad stats y aplicar sort y filter');
-
   });
-
 });
