@@ -2,49 +2,62 @@ studentsArray =
 [
   {
     'name': 'juana',
-    'porcentaje1': 1,
-    'porcentaje2': 30
+    'stats': {
+      'percent': 30,
+      'exercises': {
+        'completed': 1
+      }
+    }
   },
   {
     'name': 'ana',
-    'porcentaje1': 2,
-    'porcentaje2': 50
+    'stats': {
+      'percent': 50,
+      'exercises': {
+        'completed': 2
+      }
+    }
   },
   {
     'name': 'diana',
-    'porcentaje1': 20,
-    'porcentaje2': 28
+    'stats': {
+      'percent': 28,
+      'exercises': {
+        'completed': 20
+      }
+    }
   },
   {
     'name': 'liliana',
-    'porcentaje1': 18,
-    'porcentaje2': 50
+    'stats': {
+      'percent': 50,
+      'exercises': {
+        'completed': 18
+      }
+    }
   }
 ];
 
-console.log(sortUsers(studentsArray, 'porcentaje1', 'DESC'));
+console.log(sortUsers(studentsArray, 'name', 'ASC'));
+console.log(sortUsers(studentsArray, 'stats.percent', 'ASC'));
+console.log(sortUsers(studentsArray, 'stats.exercises.completed', 'ASC'));
 console.log(filterUsers(studentsArray, 'iana'));
 
 function sortUsers(users, orderBy, orderDirection) {
-  return users.sort(sortOn(orderBy, orderDirection));
+  return users.sort(orderByName(orderDirection));
+}
+
+function orderByName (orderDirection) {
+  return function(student1, student2){
+    let comparisonResult = student1['name'].localeCompare(student2['name']);
+    return orderDirection === 'ASC' ? comparisonResult: -comparisonResult;
+  }
 }
 
 /* ternary operator reminder:
 condition ? resultIfTrue : resultIfFalse;
 return orderDirection == 'ASC'? 1:-1;
 */
-
-function sortOn(property, orderDirection) {
-  return function(object1, object2) {
-    if (object1[property] < object2[property]) {
-      return orderDirection === 'ASC' ? -1 : 1;
-    } else if (object1[property] > object2[property]) {
-      return orderDirection === 'ASC' ? 1 : -1;
-    } else {
-      return 0;
-    }
-  };
-}
 
 function filterUsers(users, search) {
   return users.filter(user => user.name.includes(search));
