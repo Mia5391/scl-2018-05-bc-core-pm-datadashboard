@@ -47,11 +47,11 @@ function sortUsers(users, orderBy, orderDirection) {
   return users.sort(orderByName(orderDirection));
 }
 
-function orderByName (orderDirection) {
-  return function(student1, student2){
+function orderByName(orderDirection) {
+  return function(student1, student2) {
     let comparisonResult = student1['name'].localeCompare(student2['name']);
-    return orderDirection === 'ASC' ? comparisonResult: -comparisonResult;
-  }
+    return orderDirection === 'ASC' ? comparisonResult : -comparisonResult;
+  };
 }
 
 /* ternary operator reminder:
