@@ -38,26 +38,42 @@ studentsArray =
   }
 ];
 
-console.log(sortUsers(studentsArray, 'name', 'ASC'));
-console.log(sortUsers(studentsArray, 'stats.percent', 'ASC'));
-console.log(sortUsers(studentsArray, 'stats.exercises.completed', 'ASC'));
-console.log(filterUsers(studentsArray, 'iana'));
+console.log(JSON.stringify(sortUsers(studentsArray, 'name', 'ASC')));
+console.log(JSON.stringify(sortUsers(studentsArray, 'stats.percent', 'DESC')));
+console.log(JSON.stringify(sortUsers(studentsArray, 'stats.exercises.completed', 'ASC')));
+console.log(JSON.stringify(filterUsers(studentsArray, 'iana')));
 
 function sortUsers(users, orderBy, orderDirection) {
-  return users.sort(orderByName(orderDirection));
+  if (orderBy === 'name') {
+    return users.sort(orderByName(orderDirection));
+  } else if (orderBy === 'stats.percent') {
+    return users.sort(orderByTotalPercentage(orderDirection));
+  } else {
+    return users.sort(orderByStats(orderBy, orderDirection));
+  }
 }
 
 function orderByName(orderDirection) {
   return function(student1, student2) {
-    let comparisonResult = student1['name'].localeCompare(student2['name']);
+    let comparisonResult = student1.name.localeCompare(student2.name);
     return orderDirection === 'ASC' ? comparisonResult : -comparisonResult;
   };
 }
 
-/* ternary operator reminder:
-condition ? resultIfTrue : resultIfFalse;
-return orderDirection == 'ASC'? 1:-1;
-*/
+function orderByTotalPercentage(orderDirection) {
+  return function(student1, student2) {
+    let comparisonResult = student1.stats.percent - student2.stats.percent;
+    return orderDirection === 'ASC' ? comparisonResult : -comparisonResult;
+  };
+}
+
+function orderByStats(orderBy, orderDirection) {
+  let criteria = orderBy.split('.');
+  return function(student1, student2) {
+    let comparisonResult = student1.stats[criteria[1]][criteria[2]] - student2.stats[criteria[1]][criteria[2]];
+    return orderDirection === 'ASC' ? comparisonResult : -comparisonResult;
+  };
+}
 
 function filterUsers(users, search) {
   return users.filter(user => user.name.includes(search));
