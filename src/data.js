@@ -76,5 +76,5 @@ function orderByStats(orderBy, orderDirection) {
 }
 
 function filterUsers(users, search) {
-  return users.filter(user => user.name.includes(search));
+  return users.filter(user => user.name.toUpperCase.includes(search.toUpperCase));
 }

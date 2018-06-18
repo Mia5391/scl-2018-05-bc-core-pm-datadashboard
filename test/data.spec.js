@@ -172,7 +172,12 @@ describe('data', ()=>{
   });
 
   describe('filterUsers(users, filterBy)', ()=>{
-    it('debería retornar nuevo arreglo solo con usuarios con nombres que contengan string (case insensitive)');
+    it('debería retornar nuevo arreglo solo con usuarios con nombres que contengan string (case insensitive)', ()=>{
+      const filteredUsers = filterUsers(processed, 'Maria');
+      for (let i = 0; i < filteredUsers.length; i++) {
+        assert.include(filteredUsers[i].name, 'Maria');
+      }
+    });
   });
 
   describe('processCohortData({ cohortData, orderBy, orderDirection, filterBy })', ()=>{
