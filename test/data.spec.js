@@ -15,9 +15,9 @@ describe('data', ()=>{
     assert.isFunction(processCohortData);
   });
 
-/*
+
   describe('computeUsersStats(users, progress, courses)', ()=>{
-    const cohort = fixtures.cohorts.find(item => item.id === 'lim-2018-03-pre-core-pw');
+    const cohort = window.fixtures.cohorts.find(item => item.id === 'lim-2018-03-pre-core-pw');
     const courses = Object.keys(cohort.coursesIndex);
     const { users, progress } = fixtures;
     const processed = computeUsersStats(users, progress, courses);
@@ -69,14 +69,14 @@ describe('data', ()=>{
       });
     });
   });
-*/
+
 
   describe('sortUsers(users, orderBy, orderDirection)', ()=>{
     const cohort = expect.cohorts.find(item => item.id === 'lim-2018-03-pre-core-pw');
     const courses = Object.keys(cohort.coursesIndex);
-    //const { users, progress } = fixtures;
-    //const processed = computeUsersStats(expect.users, expect.progress, expect.courses);
-    const processed = [
+    const { users, progress } = window.fixtures;
+    const processed = computeUsersStats(expect.users, expect.progress, expect.courses);
+    const process = [
       {
         'name': 'juana',
         'stats': {
