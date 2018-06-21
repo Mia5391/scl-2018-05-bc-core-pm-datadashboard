@@ -1,4 +1,3 @@
-
 describe('data', ()=>{
   it('debería exponer función computeUsersStats en objeto global', ()=>{
     assert.isFunction(computeUsersStats);
@@ -16,6 +15,7 @@ describe('data', ()=>{
     assert.isFunction(processCohortData);
   });
 
+/*
   describe('computeUsersStats(users, progress, courses)', ()=>{
     const cohort = fixtures.cohorts.find(item => item.id === 'lim-2018-03-pre-core-pw');
     const courses = Object.keys(cohort.coursesIndex);
@@ -69,11 +69,51 @@ describe('data', ()=>{
       });
     });
   });
+*/
+
   describe('sortUsers(users, orderBy, orderDirection)', ()=>{
-    const cohort = fixtures.cohorts.find(item => item.id === 'lim-2018-03-pre-core-pw');
+    const cohort = expect.cohorts.find(item => item.id === 'lim-2018-03-pre-core-pw');
     const courses = Object.keys(cohort.coursesIndex);
-    const { users, progress } = fixtures;
-    const processed = computeUsersStats(users, progress, courses);
+    //const { users, progress } = fixtures;
+    //const processed = computeUsersStats(expect.users, expect.progress, expect.courses);
+    const processed = [
+      {
+        'name': 'juana',
+        'stats': {
+          'percent': 30,
+          'exercises': {
+            'completed': 1
+          }
+        }
+      },
+      {
+        'name': 'ana',
+        'stats': {
+          'percent': 50,
+          'exercises': {
+            'completed': 2
+          }
+        }
+      },
+      {
+        'name': 'diana',
+        'stats': {
+          'percent': 28,
+          'exercises': {
+            'completed': 20
+          }
+        }
+      },
+      {
+        'name': 'liliana',
+        'stats': {
+          'percent': 50,
+          'exercises': {
+            'completed': 18
+          }
+        }
+      }
+    ];
 
     it('debería exponer función orderByName en objeto global', ()=>{
       assert.isFunction(orderByName);
