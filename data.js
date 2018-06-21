@@ -1,4 +1,4 @@
-studentsArray =
+let studentsArray =
 [
   {
     'name': 'juana',
@@ -75,6 +75,7 @@ function orderByStats(orderBy, orderDirection) {
   };
 }
 
-function filterUsers(users, search) {
-  return users.filter(user => user.name.toUpperCase.includes(search.toUpperCase));
+function filterUsers(users, search){
+  let upperCaseSearch = search.toUpperCase();
+  return users.filter(user => user.name.toUpperCase().includes(upperCaseSearch));
 }
