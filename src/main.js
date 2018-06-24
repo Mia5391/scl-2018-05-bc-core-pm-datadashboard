@@ -126,7 +126,7 @@ window.onload= function(){
       return fetchedProgress;
   }
 
-  function drawTable(){
+  function drawTable(usersArray){
     let table = document.getElementById("userTable");
     eraseTable(table);
 
@@ -137,11 +137,11 @@ window.onload= function(){
       var cellQuizzes = row.insertCell(2);
       var cellReading = row.insertCell(3);
       var cellExcercisesCompleted = row.insertCell(4);
-      cellName.innerHTML = studentsArray[i].name;
-      cellPercent.innerHTML = studentsArray[i].stats.percent;
-      cellQuizzes.innerHTML = studentsArray[i].stats.quizzes.completed;
-      cellReading.innerHTML = studentsArray[i].stats.reads.completed;
-      cellExcercisesCompleted.innerHTML = studentsArray[i].stats.exercises.completed;
+      cellName.innerHTML = usersArray[i].name;
+      cellPercent.innerHTML = usersArray[i].stats.percent;
+      cellQuizzes.innerHTML = usersArray[i].stats.quizzes.completed;
+      cellReading.innerHTML = usersArray[i].stats.reads.completed;
+      cellExcercisesCompleted.innerHTML = usersArray[i].stats.exercises.completed;
     }
   }
 
@@ -154,39 +154,44 @@ window.onload= function(){
     }
   }
 
+  document.getElementById("searchButton").addEventListener("click", function(){
+    let filtered = filterUsers(studentsArray, document.getElementById('userInput').value);
+    drawTable(filtered);
+  });
+
   document.getElementById("pAsc").addEventListener("click", function(){
     sortUsers(studentsArray, 'stats.percent', 'ASC');
-    drawTable();
+    drawTable(studentsArray);
   });
   document.getElementById("pDesc").addEventListener("click", function(){
     sortUsers(studentsArray, 'stats.percent', 'DESC');
-    drawTable();
+    drawTable(studentsArray);
   });
 
   document.getElementById("qAsc").addEventListener("click", function(){
     sortUsers(studentsArray, 'stats.quizzes.completed', 'ASC');
-    drawTable();
+    drawTable(studentsArray);
   });
   document.getElementById("qDesc").addEventListener("click", function(){
     sortUsers(studentsArray, 'stats.quizzes.completed', 'DESC');
-    drawTable();
+    drawTable(studentsArray);
   });
 
   document.getElementById("rAsc").addEventListener("click", function(){
     sortUsers(studentsArray, 'stats.reads.completed', 'ASC');
-    drawTable();
+    drawTable(studentsArray);
   });
   document.getElementById("rDesc").addEventListener("click", function(){
     sortUsers(studentsArray, 'stats.reads.completed', 'DESC');
-    drawTable();
+    drawTable(studentsArray);
   });
 
   document.getElementById("eAsc").addEventListener("click", function(){
     sortUsers(studentsArray, 'stats.exercises.completed', 'ASC');
-    drawTable();
+    drawTable(studentsArray);
   });
   document.getElementById("eDesc").addEventListener("click", function(){
     sortUsers(studentsArray, 'stats.exercises.completed', 'DESC');
-    drawTable();
+    drawTable(studentsArray);
   });
 }
