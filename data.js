@@ -39,7 +39,6 @@ let studentsArray =
 ];
 
 
-
 window.sortUsers = (users, orderBy, orderDirection) => {
   if (orderBy === 'name') {
     return users.sort(orderByName(orderDirection));
@@ -76,7 +75,10 @@ window.filterUsers = (users, search) => {
   let upperCaseSearch = search.toUpperCase();
   return users.filter(user => user.name.toUpperCase().includes(upperCaseSearch));
 };
-
+/*
+window.computeUserStats = (users, progress, courses) => {
+  let newObj = Object.assign(...Object.entries(obj).map(([k, v]) => ({[k]: v * v})));
+}*/
 console.log(JSON.stringify(window.sortUsers(studentsArray, 'name', 'ASC')));
 console.log(JSON.stringify(window.sortUsers(studentsArray, 'stats.percent', 'DESC')));
 console.log(JSON.stringify(window.sortUsers(studentsArray, 'stats.exercises.completed', 'ASC')));
