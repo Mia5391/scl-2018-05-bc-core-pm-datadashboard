@@ -7,21 +7,34 @@
     <link rel="stylesheet" href="style.css" />
     <script src="data.js"></script>
     <script src="main.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>-->
   </head>
   <body>
 <div class="container">
-  <div id="menuSidenav" class="sidenav">
     <span>Search by name: <input type="text" id="userInput"></span>
-    <div><button id="cohort-button">Cohorts</button>
-    <div><button id="percentage-button">Filter by Percentage Completed </button>
-    <div><button id="exercises-button">Filter by exercises completed</button>
-    <div><button id="reading-button">Filter by reading completed</button>
-    <div><button id="quizzes-button">Filter by quizzes completed</button>
-
-
-  </div>
-
+    <select id="cohortSelector">
+      <option value="select">Cohort:</option>
+    </select>
 </div>
+
+<table id="userTable">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Percentage<br>completed<button id="Asc">&#x25B2;</button><button id="Desc">&#x25BC;</button></th>
+      <th scope="col">Quizzes<br>completed</th>
+      <th scope="col">Reading<br>completed</th>
+      <th scope="col">Exercises<br>completed</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  </tbody>
+</table>
 
 
   </body>
