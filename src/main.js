@@ -8,6 +8,12 @@ window.onload= function(){
         'percent': 30,
         'exercises': {
           'completed': 1
+        },
+        'reads': {
+          'completed': 5
+        },
+        'quizzes': {
+          'completed': 7
         }
       }
     },
@@ -16,6 +22,12 @@ window.onload= function(){
       'stats': {
         'percent': 50,
         'exercises': {
+          'completed': 2
+        },
+        'reads': {
+          'completed': 2
+        },
+        'quizzes': {
           'completed': 2
         }
       }
@@ -26,6 +38,12 @@ window.onload= function(){
         'percent': 28,
         'exercises': {
           'completed': 20
+        },
+        'reads': {
+          'completed': 10
+        },
+        'quizzes': {
+          'completed': 8
         }
       }
     },
@@ -35,6 +53,12 @@ window.onload= function(){
         'percent': 50,
         'exercises': {
           'completed': 18
+        },
+        'reads': {
+          'completed': 0
+        },
+        'quizzes': {
+          'completed': 9
         }
       }
     }
@@ -102,15 +126,67 @@ window.onload= function(){
       return fetchedProgress;
   }
 
-  let table = document.getElementById("userTable");
-  for (var i = 0; i < studentsArray.length; i++) {
-    let row = table.insertRow(i+1);
-    var cellName = row.insertCell(0);
-    var cellPercent = row.insertCell(1);
-    var cellExcercisesCompleted = row.insertCell(2);
-    cellName.innerHTML = studentsArray[i].name;
-    cellPercent.innerHTML = studentsArray[i].stats.percent;
-    cellExcercisesCompleted.innerHTML = studentsArray[i].stats.exercises.completed;
+  function drawTable(){
+    let table = document.getElementById("userTable");
+    eraseTable(table);
 
+    for (var i = 0; i < studentsArray.length; i++) {
+      let row = table.insertRow(i+1);
+      var cellName = row.insertCell(0);
+      var cellPercent = row.insertCell(1);
+      var cellQuizzes = row.insertCell(2);
+      var cellReading = row.insertCell(3);
+      var cellExcercisesCompleted = row.insertCell(4);
+      cellName.innerHTML = studentsArray[i].name;
+      cellPercent.innerHTML = studentsArray[i].stats.percent;
+      cellQuizzes.innerHTML = studentsArray[i].stats.quizzes.completed;
+      cellReading.innerHTML = studentsArray[i].stats.reads.completed;
+      cellExcercisesCompleted.innerHTML = studentsArray[i].stats.exercises.completed;
+    }
   }
+
+  function eraseTable(elmtTable){
+    var tableRows = elmtTable.getElementsByTagName('tbody')[0];
+    var rowCount = tableRows.length;
+
+    for (var x=rowCount-1; x>0; x--) {
+       elmtTable.removeChild(tableRows[x]);
+    }
+  }
+
+  document.getElementById("pAsc").addEventListener("click", function(){
+    sortUsers(studentsArray, 'stats.percent', 'ASC');
+    drawTable();
+  });
+  document.getElementById("pDesc").addEventListener("click", function(){
+    sortUsers(studentsArray, 'stats.percent', 'DESC');
+    drawTable();
+  });
+
+  document.getElementById("qAsc").addEventListener("click", function(){
+    sortUsers(studentsArray, 'stats.quizzes.completed', 'ASC');
+    drawTable();
+  });
+  document.getElementById("qDesc").addEventListener("click", function(){
+    sortUsers(studentsArray, 'stats.quizzes.completed', 'DESC');
+    drawTable();
+  });
+
+  document.getElementById("rAsc").addEventListener("click", function(){
+    sortUsers(studentsArray, 'stats.reads.completed', 'ASC');
+    drawTable();
+  });
+  document.getElementById("rDesc").addEventListener("click", function(){
+    sortUsers(studentsArray, 'stats.reads.completed', 'DESC');
+    drawTable();
+  });
+
+  document.getElementById("eAsc").addEventListener("click", function(){
+    sortUsers(studentsArray, 'stats.exercises.completed', 'ASC');
+    drawTable();
+  });
+  document.getElementById("eDesc").addEventListener("click", function(){
+    sortUsers(studentsArray, 'stats.exercises.completed', 'DESC');
+    drawTable();
+  });
 }

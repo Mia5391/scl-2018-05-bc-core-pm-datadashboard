@@ -1,7 +1,8 @@
 /*Body*/
 
+
+
 body{
-  background-color: white;
   position: relative;
   margin: 0px;
   font-family: 'Helvetica'
@@ -10,57 +11,16 @@ body{
   padding: 0px;
 }
 
-
-/*Navigation */
-
-/* Dropdown Menu */
-/* Dropdown Button */
-.dropdown-button {
-    background-color: #3498DB;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
+.background-image{
+  align-content: left;
+  opacity: 10%;
 }
-
-/* Dropdown button on hover & focus */
-.dropdown-button:hover, .dropdown-button:focus {
-    background-color: #2980B9;
-}
-
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
 
 
 /* Responsive*/
 
 /* Mobile phones */
 @media (max-width: 480px max-height: 450px){
-    .menuSidenav {padding-top: 15px;}
-    .sidenav-buttons {font-size: 18px;}
 
 }
 
@@ -70,21 +30,11 @@ body{
       width:100%;
    }
 
-   .menuSidenav{
-      color:#56F89A;
-      border-radius:5px;
-   }
 }
 
 /* Desktop */
 
 @media (max-width: 991px){
 
-   .menuSidenav{
-      margin-bottom:30px;
-      width:100%;
-      float:none;
-      position:relative;
-   }
 
 }
